@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+       // enableEdgeToEdge()
         binding=ActivityMainBinding.inflate(layoutInflater)
       setContentView(binding.root)
 
@@ -139,6 +139,15 @@ class MainActivity : AppCompatActivity() {
             binding.textinput.append("%")
             val exp=binding.textinput.text
 
+        }
+
+        binding.btnclear.setOnClickListener {
+            val currentText = binding.textinput.text.toString()
+            if (currentText.isNotEmpty()) {
+
+                binding.textinput.setText( currentText.dropLast(1)) // Remove last character
+                    binding.textEdit.setText(currentText.dropLast(1))
+            }
         }
 
         binding.btnequl.setOnClickListener {
